@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: ai-code-helper
+  profiles:
+    active: local
+
+langchain4j:
+  open-ai:
+    chat-model:
+      base-url: https://api.deepseek.com
+      api-key: ${langchain4j.api-key}
+      model-name: deepseek-v4-flash
