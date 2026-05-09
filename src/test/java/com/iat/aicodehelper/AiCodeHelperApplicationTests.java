@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
+import reactor.core.publisher.Flux;
 
 @SpringBootTest
 class AiCodeHelperApplicationTests {
@@ -59,5 +60,12 @@ class AiCodeHelperApplicationTests {
         String userMsg = "你好,我是曾经的王，King,学习编程两年半，请帮我执行学习报告";
         AiCodeHelperService.Report report = aiCodeHelperService.chatWithJsonResponse(userMsg);
         System.out.println(report);
+    }
+
+    @Test
+    void chatStream() {
+        String userMsg = "你好,我是曾经的王，King,学习编程两年半，请帮我执行学习报告";
+        Flux<String> stringFlux = aiCodeHelperService.chatStream("1", userMsg);
+        System.out.println(stringFlux);
     }
 }
